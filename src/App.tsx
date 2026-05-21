@@ -3,17 +3,20 @@ import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import HeroBanner from './components/HeroBanner';
 import ProductCard from './components/ProductCard';
+import DealsPage from './components/DealsPage';
+import AboutPage from './components/AboutPage';
 import { products } from './data/products';
 import type { Category } from './types';
 import './App.css';
 
-const CATEGORIES: Category[] = ['All', 'Grains', 'Vegetables', 'Proteins', 'Oils', 'Spices', 'Drinks'];
+type Page = 'home' | 'shop' | 'deals' | 'about';
 
+const CATEGORIES: Category[] = ['All', 'Grains', 'Vegetables', 'Proteins', 'Oils', 'Spices', 'Drinks'];
 const CAT_ICONS: Record<string, string> = {
   All: '🛍️', Grains: '🌾', Vegetables: '🥬', Proteins: '🍗', Oils: '🫙', Spices: '🌶️', Drinks: '🥤',
 };
 
-function Shop() {
+function ShopPage() {
   const [category, setCategory] = useState<Category>('All');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState<'default' | 'price-asc' | 'price-desc' | 'rating'>('default');
@@ -25,9 +28,9 @@ function Shop() {
         p.name.toLowerCase().includes(search.toLowerCase()) ||
         p.description.toLowerCase().includes(search.toLowerCase())
       );
-    if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
+    if (sort === 'price-asc')  list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
-    if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
+    if (sort === 'rating')     list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
   }, [category, search, sort]);
 
@@ -35,7 +38,6 @@ function Shop() {
     <main>
       <HeroBanner />
 
-      {/* Category chips */}
       <section className="categories-bar">
         <div className="container">
           <div className="categories-scroll">
@@ -52,7 +54,6 @@ function Shop() {
         </div>
       </section>
 
-      {/* Shop section */}
       <section className="shop-section">
         <div className="container">
           <div className="shop-toolbar">
@@ -65,11 +66,7 @@ function Shop() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
-                <input
-                  placeholder="Search products..."
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                />
+                <input placeholder="Search products..." value={search} onChange={e => setSearch(e.target.value)} />
               </div>
               <select className="sort-select" value={sort} onChange={e => setSort(e.target.value as typeof sort)}>
                 <option value="default">Sort: Default</option>
@@ -94,15 +91,14 @@ function Shop() {
         </div>
       </section>
 
-      {/* Trust strip */}
       <section className="trust-strip">
         <div className="container">
           <div className="trust-strip__grid">
             {[
-              { icon: '🚚', title: 'Free Delivery',      sub: 'Orders over ₦10,000' },
-              { icon: '✅', title: 'Verified Quality',   sub: 'Every product tested' },
-              { icon: '🔄', title: '7-Day Returns',      sub: 'No questions asked' },
-              { icon: '🔒', title: 'Secure Checkout',    sub: 'Powered by Paystack' },
+              { icon: '🚚', title: 'Free Delivery',    sub: 'Orders over ₦10,000' },
+              { icon: '✅', title: 'Verified Quality', sub: 'Every product tested' },
+              { icon: '🔄', title: '7-Day Returns',    sub: 'No questions asked' },
+              { icon: '🔒', title: 'Secure Checkout',  sub: 'Powered by Paystack' },
             ].map(t => (
               <div key={t.title} className="trust-item">
                 <span className="trust-icon">{t.icon}</span>
@@ -121,10 +117,15 @@ function Shop() {
 }
 
 export default function App() {
+  const [page, setPage] = useState<Page>('home');
+
   return (
     <CartProvider>
-      <Navbar />
-      <Shop />
+      <Navbar page={page} onNavigate={setPage} />
+      {page === 'home'  && <ShopPage />}
+      {page === 'shop'  && <ShopPage />}
+      {page === 'deals' && <DealsPage />}
+      {page === 'about' && <AboutPage />}
     </CartProvider>
   );
 }

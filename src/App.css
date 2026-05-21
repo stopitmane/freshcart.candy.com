@@ -402,3 +402,100 @@ img { display: block; max-width: 100%; }
   .shop-toolbar__right { width: 100%; flex-wrap: wrap; }
   .search-box input { width: 100%; }
 }
+
+/* ── Shared page styles ────────────────────── */
+.page-content { min-height: calc(100vh - 96px); }
+
+.section-title { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+.section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+.section-sub { font-size: 0.85rem; color: var(--text-muted); }
+.deals-section { padding: 40px 0; }
+
+/* ── Deals page ────────────────────────────── */
+.deals-hero { background: linear-gradient(135deg, #dc2626, #b91c1c); padding: 48px 0; color: white; }
+.deals-hero__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.deals-hero__tag { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; margin-bottom: 12px; }
+.deals-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 8px; }
+.deals-hero p  { opacity: 0.85; font-size: 1rem; }
+.deals-hero__stat { text-align: center; }
+.deals-hero__stat strong { display: block; font-size: 3rem; font-weight: 800; line-height: 1; }
+.deals-hero__stat span   { font-size: 0.85rem; opacity: 0.75; }
+
+.coupons-section { padding: 40px 0 0; }
+.coupons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+
+.coupon-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 4px solid; border-radius: 10px;
+  padding: 16px 20px; display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  box-shadow: var(--shadow);
+}
+.coupon-discount { display: block; font-size: 1.25rem; font-weight: 800; }
+.coupon-min { font-size: 0.78rem; color: var(--text-muted); }
+.coupon-code {
+  font-family: monospace; font-size: 0.9rem; font-weight: 700;
+  background: var(--bg); border: 1.5px dashed var(--border);
+  padding: 5px 12px; border-radius: 6px; letter-spacing: 0.06em;
+  margin-bottom: 8px; text-align: center;
+}
+.coupon-btn {
+  width: 100%; padding: 7px; border-radius: 6px; border: none;
+  color: white; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.coupon-btn.claimed { background: #9ca3af !important; cursor: default; }
+
+/* ── About page ────────────────────────────── */
+.about-hero { background: linear-gradient(135deg, #1a7a4a, #0d4f2e); padding: 72px 0; color: white; text-align: center; }
+.about-hero__tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 5px 16px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+.about-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 14px; letter-spacing: -1px; }
+.about-hero h1 span { color: #7ee8a2; }
+.about-hero p { font-size: 1.05rem; opacity: 0.8; max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+.about-stats { background: var(--white); border-bottom: 1px solid var(--border); padding: 32px 0; }
+.about-stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.about-stat { text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
+.about-stat:last-child { border-right: none; }
+.about-stat strong { display: block; font-size: 2rem; font-weight: 800; color: var(--green); }
+.about-stat span   { font-size: 0.82rem; color: var(--text-muted); }
+
+.about-section { padding: 64px 0; }
+.about-section--alt { background: var(--white); }
+
+.about-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+.about-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); display: block; margin-bottom: 10px; }
+.about-text h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px; }
+.about-text p  { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
+
+.about-values { display: flex; flex-direction: column; gap: 20px; }
+.about-value  { display: flex; align-items: flex-start; gap: 14px; }
+.about-value__icon { font-size: 1.75rem; flex-shrink: 0; margin-top: 2px; }
+.about-value strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+.about-value p { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 640px; margin: 0 auto; }
+.team-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px 20px; text-align: center; }
+.team-avatar { font-size: 3rem; margin-bottom: 12px; }
+.team-card strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.team-card span   { font-size: 0.8rem; color: var(--text-muted); }
+
+.about-cta { background: var(--green); color: white; padding: 64px 0; text-align: center; }
+.about-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+.about-cta p  { opacity: 0.85; margin-bottom: 24px; font-size: 1rem; }
+.about-cta .btn-primary { background: white; color: var(--green); font-size: 1rem; padding: 13px 32px; display: inline-block; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.about-cta .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* Fix navbar logo as button */
+.navbar__logo { background: none; border: none; cursor: pointer; }
+.navbar__link { background: none; border: none; cursor: pointer; font-family: inherit; font-size: 0.875rem; }
+
+/* ── Responsive additions ──────────────────── */
+@media (max-width: 768px) {
+  .coupons-grid { grid-template-columns: 1fr; }
+  .about-two-col { grid-template-columns: 1fr; gap: 32px; }
+  .about-stats__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .about-stat { border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+}
